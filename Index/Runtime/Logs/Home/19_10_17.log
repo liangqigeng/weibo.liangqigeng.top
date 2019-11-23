@@ -1,0 +1,55 @@
+[ 2019-10-17T13:15:45+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000497s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000721s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000746s ]
+SQL: SHOW COLUMNS FROM `hd_user` [ RunTime:0.0029s ]
+SQL: SELECT `id`,`lock` FROM `hd_user` WHERE `account` = 'admin' LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `hd_follow` [ RunTime:0.0027s ]
+SQL: SELECT `follow` FROM `hd_follow` WHERE `fans` = 1  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `hd_weibo` [ RunTime:0.0029s ]
+SQL: SHOW COLUMNS FROM `hd_userinfo` [ RunTime:0.0021s ]
+SQL: SHOW COLUMNS FROM `hd_picture` [ RunTime:0.0025s ]
+SQL: SELECT COUNT(*) AS tp_count FROM hd_weibo weibo LEFT JOIN hd_userinfo userinfo ON weibo.uid = userinfo.uid LEFT JOIN hd_picture picture ON weibo.id = picture.wid WHERE weibo.uid IN ('1') LIMIT 1   [ RunTime:0.0011s ]
+SQL: SELECT weibo.id AS id,weibo.content AS content,weibo.isturn AS isturn,weibo.time AS time,weibo.turn AS turn,weibo.keep AS keep,weibo.comment AS comment,weibo.uid AS uid,userinfo.username AS username,userinfo.face50 AS face,picture.mini AS mini,picture.medium AS medium,picture.max AS max FROM hd_weibo weibo LEFT JOIN hd_userinfo userinfo ON weibo.uid = userinfo.uid LEFT JOIN hd_picture picture ON weibo.id = picture.wid WHERE weibo.uid IN ('1') ORDER BY weibo.time DESC LIMIT 0,20   [ RunTime:0.0007s ]
+SQL: SELECT `follow` FROM `hd_follow` WHERE `fans` = 1  [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000173s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000205s ]
+SQL: SELECT `style` FROM `hd_userinfo` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT `username` FROM `hd_userinfo` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `hd_group` [ RunTime:0.0018s ]
+SQL: SELECT * FROM `hd_group` WHERE `uid` = 1  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `hd_group` WHERE `uid` = 1  [ RunTime:0.0003s ]
+SQL: SELECT `username`,`face80` AS `face`,`follow`,`fans`,`weibo`,`uid` FROM `hd_userinfo` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `follow` FROM `hd_follow` WHERE `fans` = 1  [ RunTime:0.0003s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AND f.`follow` NOT IN () AND f.`follow` <>1 GROUP BY f.`follow` ORDER BY `coun' at line 1
+ [ SQL语句 ] : SELECT `uid`,`username`,`face50` AS `face`,COUNT(f.`follow`) AS `count` FROM `hd_follow` f LEFT JOIN `hd_userinfo` u ON f.`follow` = u.`uid` WHERE f.`fans` IN () AND f.`follow` NOT IN () AND f.`follow` <>1 GROUP BY f.`follow` ORDER BY `count` DESC LIMIT 4
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AND f.`follow` NOT IN () AND f.`follow` <>1 GROUP BY f.`follow` ORDER BY `coun' at line 1
+ [ SQL语句 ] : SELECT `uid`,`username`,`face50` AS `face`,COUNT(f.`follow`) AS `count` FROM `hd_follow` f LEFT JOIN `hd_userinfo` u ON f.`follow` = u.`uid` WHERE f.`fans` IN () AND f.`follow` NOT IN () AND f.`follow` <>1 GROUP BY f.`follow` ORDER BY `count` DESC LIMIT 4
+
+[ 2019-10-17T13:15:45+08:00 ] 127.0.0.1 /index.php/Home/Index/getMsg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000491s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000733s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000760s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001742s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001822s ]
+
+[ 2019-10-17T13:15:50+08:00 ] 127.0.0.1 /index.php/Home/Index/getMsg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000501s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000919s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000976s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001018s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001085s ]
+

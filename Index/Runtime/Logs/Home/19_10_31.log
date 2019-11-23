@@ -1,0 +1,289 @@
+[ 2019-10-31T09:26:12+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000662s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000969s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001002s ]
+
+[ 2019-10-31T09:26:12+08:00 ] 127.0.0.1 /index.php/Home/Login/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000343s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000528s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000557s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000030s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000067s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.013602s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013641s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000926s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000952s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000875s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000897s ]
+
+[ 2019-10-31T09:26:54+08:00 ] 127.0.0.1 /index.php/Home/Login/login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000007s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000315s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000393s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000415s ]
+SQL: SHOW COLUMNS FROM `hd_user` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `hd_user` WHERE `account` = 'admin' LIMIT 1   [ RunTime:0.0003s ]
+
+[ 2019-10-31T09:26:57+08:00 ] 127.0.0.1 /index.php
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000005s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000257s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000349s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000370s ]
+SQL: SHOW COLUMNS FROM `hd_follow` [ RunTime:0.0025s ]
+SQL: SELECT `follow` FROM `hd_follow` WHERE `fans` = 1  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `hd_weibo` [ RunTime:0.0027s ]
+SQL: SHOW COLUMNS FROM `hd_userinfo` [ RunTime:0.0024s ]
+SQL: SHOW COLUMNS FROM `hd_picture` [ RunTime:0.0023s ]
+SQL: SELECT COUNT(*) AS tp_count FROM hd_weibo weibo LEFT JOIN hd_userinfo userinfo ON weibo.uid = userinfo.uid LEFT JOIN hd_picture picture ON weibo.id = picture.wid WHERE weibo.uid IN ('1') LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT weibo.id AS id,weibo.content AS content,weibo.isturn AS isturn,weibo.time AS time,weibo.turn AS turn,weibo.keep AS keep,weibo.comment AS comment,weibo.uid AS uid,userinfo.username AS username,userinfo.face50 AS face,picture.mini AS mini,picture.medium AS medium,picture.max AS max FROM hd_weibo weibo LEFT JOIN hd_userinfo userinfo ON weibo.uid = userinfo.uid LEFT JOIN hd_picture picture ON weibo.id = picture.wid WHERE weibo.uid IN ('1') ORDER BY weibo.time DESC LIMIT 0,20   [ RunTime:0.0005s ]
+SQL: SELECT `follow` FROM `hd_follow` WHERE `fans` = 1  [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000295s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000340s ]
+SQL: SELECT `style` FROM `hd_userinfo` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0006s ]
+SQL: SELECT `username` FROM `hd_userinfo` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `hd_group` [ RunTime:0.0025s ]
+SQL: SELECT * FROM `hd_group` WHERE `uid` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `hd_group` WHERE `uid` = 1  [ RunTime:0.0002s ]
+SQL: SELECT `username`,`face80` AS `face`,`follow`,`fans`,`weibo`,`uid` FROM `hd_userinfo` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `follow` FROM `hd_follow` WHERE `fans` = 1  [ RunTime:0.0002s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AND f.`follow` NOT IN () AND f.`follow` <>1 GROUP BY f.`follow` ORDER BY `coun' at line 1
+ [ SQL语句 ] : SELECT `uid`,`username`,`face50` AS `face`,COUNT(f.`follow`) AS `count` FROM `hd_follow` f LEFT JOIN `hd_userinfo` u ON f.`follow` = u.`uid` WHERE f.`fans` IN () AND f.`follow` NOT IN () AND f.`follow` <>1 GROUP BY f.`follow` ORDER BY `count` DESC LIMIT 4
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AND f.`follow` NOT IN () AND f.`follow` <>1 GROUP BY f.`follow` ORDER BY `coun' at line 1
+ [ SQL语句 ] : SELECT `uid`,`username`,`face50` AS `face`,COUNT(f.`follow`) AS `count` FROM `hd_follow` f LEFT JOIN `hd_userinfo` u ON f.`follow` = u.`uid` WHERE f.`fans` IN () AND f.`follow` NOT IN () AND f.`follow` <>1 GROUP BY f.`follow` ORDER BY `count` DESC LIMIT 4
+
+[ 2019-10-31T09:26:57+08:00 ] 127.0.0.1 /index.php/Home/Index/getMsg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000015s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000795s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001080s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001125s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001351s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001408s ]
+
+[ 2019-10-31T09:27:03+08:00 ] 127.0.0.1 /index.php/Home/Index/getMsg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000007s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000551s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000724s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000746s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001491s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001551s ]
+
+[ 2019-10-31T09:27:04+08:00 ] 127.0.0.1 /index.php/Home/Index/editStyle
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000006s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000276s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000415s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000433s ]
+SQL: SHOW COLUMNS FROM `hd_userinfo` [ RunTime:0.0010s ]
+SQL: UPDATE `hd_userinfo` SET `style`='style3' WHERE `uid` = 1 [ RunTime:0.0003s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001215s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001259s ]
+
+[ 2019-10-31T09:27:04+08:00 ] 127.0.0.1 /index.php
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000006s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000307s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000667s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000716s ]
+SQL: SHOW COLUMNS FROM `hd_follow` [ RunTime:0.0007s ]
+SQL: SELECT `follow` FROM `hd_follow` WHERE `fans` = 1  [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `hd_weibo` [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `hd_userinfo` [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `hd_picture` [ RunTime:0.0006s ]
+SQL: SELECT COUNT(*) AS tp_count FROM hd_weibo weibo LEFT JOIN hd_userinfo userinfo ON weibo.uid = userinfo.uid LEFT JOIN hd_picture picture ON weibo.id = picture.wid WHERE weibo.uid IN ('1') LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT weibo.id AS id,weibo.content AS content,weibo.isturn AS isturn,weibo.time AS time,weibo.turn AS turn,weibo.keep AS keep,weibo.comment AS comment,weibo.uid AS uid,userinfo.username AS username,userinfo.face50 AS face,picture.mini AS mini,picture.medium AS medium,picture.max AS max FROM hd_weibo weibo LEFT JOIN hd_userinfo userinfo ON weibo.uid = userinfo.uid LEFT JOIN hd_picture picture ON weibo.id = picture.wid WHERE weibo.uid IN ('1') ORDER BY weibo.time DESC LIMIT 0,20   [ RunTime:0.0003s ]
+SQL: SELECT `follow` FROM `hd_follow` WHERE `fans` = 1  [ RunTime:0.0001s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000163s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000191s ]
+SQL: SELECT `style` FROM `hd_userinfo` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `username` FROM `hd_userinfo` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `hd_group` [ RunTime:0.0009s ]
+SQL: SELECT * FROM `hd_group` WHERE `uid` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `hd_group` WHERE `uid` = 1  [ RunTime:0.0001s ]
+SQL: SELECT `username`,`face80` AS `face`,`follow`,`fans`,`weibo`,`uid` FROM `hd_userinfo` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `follow` FROM `hd_follow` WHERE `fans` = 1  [ RunTime:0.0001s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AND f.`follow` NOT IN () AND f.`follow` <>1 GROUP BY f.`follow` ORDER BY `coun' at line 1
+ [ SQL语句 ] : SELECT `uid`,`username`,`face50` AS `face`,COUNT(f.`follow`) AS `count` FROM `hd_follow` f LEFT JOIN `hd_userinfo` u ON f.`follow` = u.`uid` WHERE f.`fans` IN () AND f.`follow` NOT IN () AND f.`follow` <>1 GROUP BY f.`follow` ORDER BY `count` DESC LIMIT 4
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AND f.`follow` NOT IN () AND f.`follow` <>1 GROUP BY f.`follow` ORDER BY `coun' at line 1
+ [ SQL语句 ] : SELECT `uid`,`username`,`face50` AS `face`,COUNT(f.`follow`) AS `count` FROM `hd_follow` f LEFT JOIN `hd_userinfo` u ON f.`follow` = u.`uid` WHERE f.`fans` IN () AND f.`follow` NOT IN () AND f.`follow` <>1 GROUP BY f.`follow` ORDER BY `count` DESC LIMIT 4
+
+[ 2019-10-31T09:27:04+08:00 ] 127.0.0.1 /index.php/Home/Index/getMsg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000636s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000892s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000932s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000997s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001062s ]
+
+[ 2019-10-31T09:27:09+08:00 ] 127.0.0.1 /index.php/Home/Index/editStyle
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000411s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000495s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000519s ]
+SQL: SHOW COLUMNS FROM `hd_userinfo` [ RunTime:0.0009s ]
+SQL: UPDATE `hd_userinfo` SET `style`='style4' WHERE `uid` = 1 [ RunTime:0.0003s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001162s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001203s ]
+
+[ 2019-10-31T09:27:09+08:00 ] 127.0.0.1 /index.php
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000343s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000521s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000552s ]
+SQL: SHOW COLUMNS FROM `hd_follow` [ RunTime:0.0015s ]
+SQL: SELECT `follow` FROM `hd_follow` WHERE `fans` = 1  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `hd_weibo` [ RunTime:0.0015s ]
+SQL: SHOW COLUMNS FROM `hd_userinfo` [ RunTime:0.0013s ]
+SQL: SHOW COLUMNS FROM `hd_picture` [ RunTime:0.0006s ]
+SQL: SELECT COUNT(*) AS tp_count FROM hd_weibo weibo LEFT JOIN hd_userinfo userinfo ON weibo.uid = userinfo.uid LEFT JOIN hd_picture picture ON weibo.id = picture.wid WHERE weibo.uid IN ('1') LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT weibo.id AS id,weibo.content AS content,weibo.isturn AS isturn,weibo.time AS time,weibo.turn AS turn,weibo.keep AS keep,weibo.comment AS comment,weibo.uid AS uid,userinfo.username AS username,userinfo.face50 AS face,picture.mini AS mini,picture.medium AS medium,picture.max AS max FROM hd_weibo weibo LEFT JOIN hd_userinfo userinfo ON weibo.uid = userinfo.uid LEFT JOIN hd_picture picture ON weibo.id = picture.wid WHERE weibo.uid IN ('1') ORDER BY weibo.time DESC LIMIT 0,20   [ RunTime:0.0003s ]
+SQL: SELECT `follow` FROM `hd_follow` WHERE `fans` = 1  [ RunTime:0.0001s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000220s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000253s ]
+SQL: SELECT `style` FROM `hd_userinfo` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT `username` FROM `hd_userinfo` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `hd_group` [ RunTime:0.0013s ]
+SQL: SELECT * FROM `hd_group` WHERE `uid` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `hd_group` WHERE `uid` = 1  [ RunTime:0.0002s ]
+SQL: SELECT `username`,`face80` AS `face`,`follow`,`fans`,`weibo`,`uid` FROM `hd_userinfo` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `follow` FROM `hd_follow` WHERE `fans` = 1  [ RunTime:0.0002s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AND f.`follow` NOT IN () AND f.`follow` <>1 GROUP BY f.`follow` ORDER BY `coun' at line 1
+ [ SQL语句 ] : SELECT `uid`,`username`,`face50` AS `face`,COUNT(f.`follow`) AS `count` FROM `hd_follow` f LEFT JOIN `hd_userinfo` u ON f.`follow` = u.`uid` WHERE f.`fans` IN () AND f.`follow` NOT IN () AND f.`follow` <>1 GROUP BY f.`follow` ORDER BY `count` DESC LIMIT 4
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AND f.`follow` NOT IN () AND f.`follow` <>1 GROUP BY f.`follow` ORDER BY `coun' at line 1
+ [ SQL语句 ] : SELECT `uid`,`username`,`face50` AS `face`,COUNT(f.`follow`) AS `count` FROM `hd_follow` f LEFT JOIN `hd_userinfo` u ON f.`follow` = u.`uid` WHERE f.`fans` IN () AND f.`follow` NOT IN () AND f.`follow` <>1 GROUP BY f.`follow` ORDER BY `count` DESC LIMIT 4
+
+[ 2019-10-31T09:27:09+08:00 ] 127.0.0.1 /index.php/Home/Index/getMsg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000808s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001402s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001454s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001470s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001543s ]
+
+[ 2019-10-31T09:27:15+08:00 ] 127.0.0.1 /index.php/Home/Index/getMsg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000435s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000570s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000594s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001096s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001154s ]
+
+[ 2019-10-31T09:27:18+08:00 ] 127.0.0.1 /index.php/Home/Index/editStyle
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000456s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000598s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000625s ]
+SQL: SHOW COLUMNS FROM `hd_userinfo` [ RunTime:0.0013s ]
+SQL: UPDATE `hd_userinfo` SET `style`='default' WHERE `uid` = 1 [ RunTime:0.0003s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000630s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000648s ]
+
+[ 2019-10-31T09:27:18+08:00 ] 127.0.0.1 /index.php
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000007s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000403s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000570s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000602s ]
+SQL: SHOW COLUMNS FROM `hd_follow` [ RunTime:0.0010s ]
+SQL: SELECT `follow` FROM `hd_follow` WHERE `fans` = 1  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `hd_weibo` [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hd_userinfo` [ RunTime:0.0011s ]
+SQL: SHOW COLUMNS FROM `hd_picture` [ RunTime:0.0011s ]
+SQL: SELECT COUNT(*) AS tp_count FROM hd_weibo weibo LEFT JOIN hd_userinfo userinfo ON weibo.uid = userinfo.uid LEFT JOIN hd_picture picture ON weibo.id = picture.wid WHERE weibo.uid IN ('1') LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT weibo.id AS id,weibo.content AS content,weibo.isturn AS isturn,weibo.time AS time,weibo.turn AS turn,weibo.keep AS keep,weibo.comment AS comment,weibo.uid AS uid,userinfo.username AS username,userinfo.face50 AS face,picture.mini AS mini,picture.medium AS medium,picture.max AS max FROM hd_weibo weibo LEFT JOIN hd_userinfo userinfo ON weibo.uid = userinfo.uid LEFT JOIN hd_picture picture ON weibo.id = picture.wid WHERE weibo.uid IN ('1') ORDER BY weibo.time DESC LIMIT 0,20   [ RunTime:0.0004s ]
+SQL: SELECT `follow` FROM `hd_follow` WHERE `fans` = 1  [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000163s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000190s ]
+SQL: SELECT `style` FROM `hd_userinfo` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT `username` FROM `hd_userinfo` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `hd_group` [ RunTime:0.0011s ]
+SQL: SELECT * FROM `hd_group` WHERE `uid` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `hd_group` WHERE `uid` = 1  [ RunTime:0.0001s ]
+SQL: SELECT `username`,`face80` AS `face`,`follow`,`fans`,`weibo`,`uid` FROM `hd_userinfo` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `follow` FROM `hd_follow` WHERE `fans` = 1  [ RunTime:0.0001s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AND f.`follow` NOT IN () AND f.`follow` <>1 GROUP BY f.`follow` ORDER BY `coun' at line 1
+ [ SQL语句 ] : SELECT `uid`,`username`,`face50` AS `face`,COUNT(f.`follow`) AS `count` FROM `hd_follow` f LEFT JOIN `hd_userinfo` u ON f.`follow` = u.`uid` WHERE f.`fans` IN () AND f.`follow` NOT IN () AND f.`follow` <>1 GROUP BY f.`follow` ORDER BY `count` DESC LIMIT 4
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AND f.`follow` NOT IN () AND f.`follow` <>1 GROUP BY f.`follow` ORDER BY `coun' at line 1
+ [ SQL语句 ] : SELECT `uid`,`username`,`face50` AS `face`,COUNT(f.`follow`) AS `count` FROM `hd_follow` f LEFT JOIN `hd_userinfo` u ON f.`follow` = u.`uid` WHERE f.`fans` IN () AND f.`follow` NOT IN () AND f.`follow` <>1 GROUP BY f.`follow` ORDER BY `count` DESC LIMIT 4
+
+[ 2019-10-31T09:27:18+08:00 ] 127.0.0.1 /index.php/Home/Index/getMsg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000293s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000497s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000533s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001210s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001284s ]
+
+[ 2019-10-31T09:27:23+08:00 ] 127.0.0.1 /index.php/Home/Index/getMsg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000430s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000730s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000752s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001530s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001590s ]
+
+[ 2019-10-31T09:27:28+08:00 ] 127.0.0.1 /index.php/Home/Index/getMsg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000405s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000995s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001045s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001453s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001537s ]
+
